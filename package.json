@@ -1,0 +1,22 @@
+{
+  "name": "acc-website",
+  "version": "1.0.0",
+  "description": "Informational website about Assetto Corsa Competizione (school project)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "init-db": "node database/db.js",
+    "hash-password": "node scripts/hash-password.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^13.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "multer": "^2.0.2"
+  }
+}
