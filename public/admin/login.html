@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login – ACC Fan Site</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-layout="admin-login">
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <div class="container">
+      <div class="panel login-box">
+        <h1 style="font-size: 1.6rem; margin-bottom: 8px;">Admin Login</h1>
+        <p class="muted" style="margin-bottom: 24px;">Sign in to manage game information, news, and the gallery.</p>
+
+        <div id="login-alert"></div>
+
+        <form id="login-form">
+          <div class="form-row">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autofocus autocomplete="username">
+          </div>
+
+          <div class="form-row">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+          </div>
+
+          <div class="form-actions" style="margin-top: 24px;">
+            <button class="btn btn-primary" type="submit" id="login-btn" style="width: 100%;">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="/js/utils.js"></script>
+  <script src="/admin/login.js"></script>
+</body>
+</html>

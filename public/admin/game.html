@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Edit Game Info – ACC Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-layout="admin">
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="section">
+      <div class="container" style="max-width: 850px;">
+        <div class="admin-bar">
+          <h1>Edit Game Information</h1>
+        </div>
+        <p class="muted" style="margin-bottom: 24px;">Update the game details displayed on the homepage and Description page.</p>
+
+        <div id="form-alert"></div>
+
+        <form id="game-form" class="panel">
+          <div class="form-grid">
+            <div class="form-row">
+              <label for="name">Game Title *</label>
+              <input type="text" id="name" name="name" maxlength="100" required>
+            </div>
+
+            <div class="form-row">
+              <label for="genre">Genre *</label>
+              <input type="text" id="genre" name="genre" maxlength="100" required>
+            </div>
+
+            <div class="form-row">
+              <label for="developer">Developer *</label>
+              <input type="text" id="developer" name="developer" maxlength="100" required>
+            </div>
+
+            <div class="form-row">
+              <label for="publisher">Publisher *</label>
+              <input type="text" id="publisher" name="publisher" maxlength="100" required>
+            </div>
+
+            <div class="form-row">
+              <label for="release_year">Release Year *</label>
+              <input type="number" id="release_year" name="release_year" min="1980" max="2100" required>
+            </div>
+
+            <div class="form-row">
+              <label for="platforms">Platforms *</label>
+              <input type="text" id="platforms" name="platforms" maxlength="200" required>
+              <div class="field-hint">e.g. PC, PlayStation 5, Xbox Series X|S</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="short_description">Short Summary (Homepage hero) *</label>
+            <textarea id="short_description" name="short_description" rows="2" maxlength="300" required></textarea>
+            <div class="field-hint">Max 300 characters. Displays prominently on the main landing page.</div>
+          </div>
+
+          <div class="form-row">
+            <label for="description">Full Description *</label>
+            <textarea id="description" name="description" rows="8" maxlength="5000" required></textarea>
+            <div class="field-hint">Separate paragraphs with a blank line. Displays on the Description page.</div>
+          </div>
+
+          <div class="form-actions" style="margin-top: 24px;">
+            <button class="btn btn-primary" type="submit" id="save-btn">Save Changes</button>
+            <button class="btn btn-secondary" type="button" id="reload-btn">Discard Changes</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="/js/utils.js"></script>
+  <script src="/admin/game.js"></script>
+</body>
+</html>

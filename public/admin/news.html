@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage News – ACC Admin</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-layout="admin">
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="admin-bar">
+          <h1>Manage News Articles</h1>
+          <button class="btn btn-primary" id="open-create-btn" type="button">+ New Article</button>
+        </div>
+
+        <div id="admin-alert"></div>
+
+        <!-- Create / Edit Form Panel -->
+        <div id="news-form-panel" class="panel hidden" style="margin-bottom: 32px;">
+          <h2 id="form-heading" style="margin-bottom: 20px;">Add New Article</h2>
+
+          <form id="news-form" enctype="multipart/form-data">
+            <input type="hidden" id="news-id" name="id">
+
+            <div class="form-grid">
+              <div class="form-row">
+                <label for="title">Article Title *</label>
+                <input type="text" id="title" name="title" maxlength="150" required>
+              </div>
+
+              <div class="form-row">
+                <label for="category">Category *</label>
+                <input type="text" id="category" name="category" list="category-suggestions" maxlength="50" required placeholder="e.g. Guide, Site news, Update">
+                <datalist id="category-suggestions">
+                  <option value="Guide">
+                  <option value="Site news">
+                  <option value="Update">
+                  <option value="Esports">
+                  <option value="Community">
+                </datalist>
+              </div>
+
+              <div class="form-row">
+                <label for="date">Publish Date (YYYY-MM-DD) *</label>
+                <input type="date" id="date" name="date" required>
+              </div>
+
+              <div class="form-row">
+                <label for="image" id="image-label">Cover Image *</label>
+                <input type="file" id="image" name="image" accept="image/jpeg,image/png,image/webp">
+                <div class="field-hint" id="image-hint">Allowed formats: JPG, PNG, WEBP (max 5 MB).</div>
+                <img id="image-preview" class="image-preview hidden" src="" alt="Image preview">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="description">Short Description *</label>
+              <textarea id="description" name="description" rows="2" maxlength="300" required placeholder="One or two sentences summarizing the article."></textarea>
+              <div class="field-hint">Max 300 characters. Shown on news listing cards.</div>
+            </div>
+
+            <div class="form-row">
+              <label for="content">Full Article Content *</label>
+              <textarea id="content" name="content" rows="10" maxlength="20000" required placeholder="Full body of the news article. Use blank lines between paragraphs."></textarea>
+              <div class="field-hint">Separate paragraphs with blank lines. Max 20,000 characters.</div>
+            </div>
+
+            <div class="form-actions" style="margin-top: 24px;">
+              <button class="btn btn-primary" type="submit" id="save-article-btn">Save Article</button>
+              <button class="btn btn-secondary" type="button" id="cancel-btn">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- News Table -->
+        <div id="news-table-container">
+          <p class="loading">Loading news articles…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="/js/utils.js"></script>
+  <script src="/admin/news.js"></script>
+</body>
+</html>

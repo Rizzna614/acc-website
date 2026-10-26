@@ -11,8 +11,8 @@ function requireAdmin(req, res, next) {
 
 // For admin HTML pages: redirect to the login page if not logged in.
 function requireAdminPage(req, res, next) {
-  if (req.path === '/login.html') {
-    return next();   // the login page itself must be reachable
+  if (req.path === '/login.html' || req.path === '/login.js') {
+    return next();   // the login page and its script must be reachable
   }
   if (req.session && req.session.isAdmin) {
     return next();
