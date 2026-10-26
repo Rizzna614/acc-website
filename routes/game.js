@@ -27,7 +27,6 @@ router.put('/', requireAdmin, (req, res) => {
     developer: 100,
     publisher: 100,
     genre: 100,
-    platforms: 200,
     description: 5000
   };
 
@@ -45,6 +44,18 @@ router.put('/', requireAdmin, (req, res) => {
     clean[field] = value;
   }
 
+  // Handle platform (1NF atomic) and platforms (alias)
+  const platformVal = typeof body.platform === 'string' && body.platform.trim()
+    ? body.platform.trim()
+    : (typeof body.platforms === 'string' && body.platforms.trim() ? body.platforms.trim() : 'PC');
+  clean.platform = platformVal;
+  clean.platforms = platformVal;
+
+  // Main cover image path or URL
+  clean.main_image = typeof body.main_image === 'string' && body.main_image.trim()
+    ? body.main_image.trim()
+    : '/images/hero.jpg';
+
   const year = Number(body.release_year);
   if (!Number.isInteger(year) || year < 1980 || year > 2100) {
     errors.push('release year must be a whole year between 1980 and 2100.');
@@ -57,11 +68,11 @@ router.put('/', requireAdmin, (req, res) => {
   db.prepare(`
     UPDATE game_info
     SET name = ?, short_description = ?, developer = ?, publisher = ?,
-        genre = ?, release_year = ?, platforms = ?, description = ?
+        genre = ?, release_year = ?, platform = ?, platforms = ?, description = ?, main_image = ?
     WHERE id = 1
   `).run(
     clean.name, clean.short_description, clean.developer, clean.publisher,
-    clean.genre, year, clean.platforms, clean.description
+    clean.genre, year, clean.platform, clean.platforms, clean.description, clean.main_image
   );
 
   const updated = db.prepare('SELECT * FROM game_info WHERE id = 1').get();
