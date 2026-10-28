@@ -13,6 +13,7 @@ async function loadDescription() {
         <div class="prose">
           <h2>${escapeHtml(game.name)}</h2>
           ${textToHtml(game.description)}
+            <img src="${escapeHtml(imageSrc('/images/ascDisc.jpg'))}">
         </div>
         <aside class="panel">
           <h3>Game facts</h3>
